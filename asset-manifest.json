@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/AnnaTsepilova/goit-react-hw-02-feedback/static/css/main.d5882780.css",
+    "main.js": "/AnnaTsepilova/goit-react-hw-02-feedback/static/js/main.1b44d591.js",
+    "index.html": "/AnnaTsepilova/goit-react-hw-02-feedback/index.html",
+    "main.d5882780.css.map": "/AnnaTsepilova/goit-react-hw-02-feedback/static/css/main.d5882780.css.map",
+    "main.1b44d591.js.map": "/AnnaTsepilova/goit-react-hw-02-feedback/static/js/main.1b44d591.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d5882780.css",
+    "static/js/main.1b44d591.js"
+  ]
+}
