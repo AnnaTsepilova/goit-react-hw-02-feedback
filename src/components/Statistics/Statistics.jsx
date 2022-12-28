@@ -4,7 +4,7 @@ import {
   StatisticsItem,
   Text,
   CounterValue,
-} from 'components/Counter/Counter.styled';
+} from 'components/App.styled';
 
 export default function Statistics({ good, neutral, bad, total, percentage }) {
   return (

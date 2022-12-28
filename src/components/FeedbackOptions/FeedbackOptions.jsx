@@ -1,19 +1,17 @@
-import {
-  FeedbackOptionsWrapper,
-  Button,
-} from 'components/Counter/Counter.styled';
+import { FeedbackOptionsWrapper, Button } from 'components/App.styled';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <FeedbackOptionsWrapper>
-      {options.map((item, key) => (
+      {options.map((option, key) => (
         <Button
           type="button"
           key={key}
-          onClick={onLeaveFeedback}
-          data-btn={item.btnName}
+          onClick={() => {
+            onLeaveFeedback(option);
+          }}
         >
-          {item.btnName}
+          {option}
         </Button>
       ))}
     </FeedbackOptionsWrapper>

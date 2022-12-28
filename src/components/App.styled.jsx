@@ -40,6 +40,7 @@ export const Button = styled.button`
   font-family: inherit;
   font-weight: 600;
   font-size: 16px;
+  text-transform: capitalize;
 
   cursor: pointer;
   outline: rgba(0, 0, 0, 0);
