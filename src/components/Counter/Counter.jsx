@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   CounterContainer,
-  CounterControls,
-  Button,
   StatisticsWrapper,
   SubTitle,
   StatisticsList,
@@ -11,7 +10,19 @@ import {
   CounterValue,
 } from './Counter.styled';
 
-class Counter extends React.Component {
+import Controls from '../Controls/Controls';
+
+class Counter extends Component {
+  static defaultProps = {
+    initialValue: 0,
+  };
+
+  static propTypes = {
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+  };
+
   state = {
     good: 0,
     neutral: 0,
@@ -39,21 +50,32 @@ class Counter extends React.Component {
       };
     });
   };
+  countTotalFeedback = () => {
+    const total = Object.values(this.state).reduce((acc, number) => {
+      return acc + number;
+    }, 0);
+    return total;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const total = this.countTotalFeedback();
+    if (total === 0) {
+      return 0;
+    }
+    const positiveFeedbackPercentage = Math.round(
+      (this.state.good * 100) / total
+    );
+    return positiveFeedbackPercentage;
+  };
 
   render() {
     return (
       <CounterContainer>
-        <CounterControls>
-          <Button type="button" onClick={this.handleBtnGood}>
-            Good
-          </Button>
-          <Button type="button" onClick={this.handleBtnNeutral}>
-            Neutral
-          </Button>
-          <Button type="button" onClick={this.handleBtnBad}>
-            Bad
-          </Button>
-        </CounterControls>
+        <Controls
+          onBtnGood={this.handleBtnGood}
+          onBtnNeutral={this.handleBtnNeutral}
+          onBtnBad={this.handleBtnBad}
+        />
         <StatisticsWrapper>
           <SubTitle>Statistics</SubTitle>
           <StatisticsList>
@@ -68,6 +90,16 @@ class Counter extends React.Component {
             <StatisticsItem>
               <Text>Bad:</Text>
               <CounterValue>{this.state.bad}</CounterValue>
+            </StatisticsItem>
+            <StatisticsItem>
+              <Text>Total:</Text>
+              <CounterValue>{this.countTotalFeedback()}</CounterValue>
+            </StatisticsItem>
+            <StatisticsItem>
+              <Text>Positive feedback:</Text>
+              <CounterValue>
+                {this.countPositiveFeedbackPercentage()}%
+              </CounterValue>
             </StatisticsItem>
           </StatisticsList>
         </StatisticsWrapper>
