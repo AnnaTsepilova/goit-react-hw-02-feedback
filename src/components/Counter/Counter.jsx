@@ -4,13 +4,12 @@ import {
   CounterContainer,
   StatisticsWrapper,
   SubTitle,
-  StatisticsList,
-  StatisticsItem,
-  Text,
-  CounterValue,
 } from './Counter.styled';
 
-import Controls from '../Controls/Controls';
+import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
+import Statistics from 'components/Statistics/Statistics';
+import Section from 'components/Section/Section';
+//import Section from 'components/Section/Section';
 
 class Counter extends Component {
   static defaultProps = {
@@ -22,6 +21,18 @@ class Counter extends Component {
     neutral: PropTypes.number,
     bad: PropTypes.number,
   };
+
+  options = [
+    {
+      btnName: 'Good',
+    },
+    {
+      btnName: 'Neutral',
+    },
+    {
+      btnName: 'Bad',
+    },
+  ];
 
   state = {
     good: 0,
@@ -68,40 +79,39 @@ class Counter extends Component {
     return positiveFeedbackPercentage;
   };
 
+  onLeaveFeedback = event => {
+    switch (event.target.dataset.btn) {
+      case 'Good':
+        this.handleBtnGood();
+        break;
+      case 'Neutral':
+        this.handleBtnNeutral();
+        break;
+      case 'Bad':
+        this.handleBtnBad();
+        break;
+    }
+  };
+
   render() {
     return (
       <CounterContainer>
-        <Controls
-          onBtnGood={this.handleBtnGood}
-          onBtnNeutral={this.handleBtnNeutral}
-          onBtnBad={this.handleBtnBad}
-        />
+        <Section>
+          <FeedbackOptions
+            options={this.options}
+            onLeaveFeedback={this.onLeaveFeedback}
+          />
+        </Section>
         <StatisticsWrapper>
-          <SubTitle>Statistics</SubTitle>
-          <StatisticsList>
-            <StatisticsItem>
-              <Text>Good:</Text>
-              <CounterValue>{this.state.good}</CounterValue>
-            </StatisticsItem>
-            <StatisticsItem>
-              <Text>Neutral:</Text>
-              <CounterValue>{this.state.neutral}</CounterValue>
-            </StatisticsItem>
-            <StatisticsItem>
-              <Text>Bad:</Text>
-              <CounterValue>{this.state.bad}</CounterValue>
-            </StatisticsItem>
-            <StatisticsItem>
-              <Text>Total:</Text>
-              <CounterValue>{this.countTotalFeedback()}</CounterValue>
-            </StatisticsItem>
-            <StatisticsItem>
-              <Text>Positive feedback:</Text>
-              <CounterValue>
-                {this.countPositiveFeedbackPercentage()}%
-              </CounterValue>
-            </StatisticsItem>
-          </StatisticsList>
+          <Section title="Statistics">
+            <Statistics
+              good={this.state.good}
+              neutral={this.state.neutral}
+              bad={this.state.bad}
+              total={this.countTotalFeedback()}
+              percentage={this.countPositiveFeedbackPercentage()}
+            />
+          </Section>
         </StatisticsWrapper>
       </CounterContainer>
     );

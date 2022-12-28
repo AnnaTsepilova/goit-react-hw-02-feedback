@@ -16,7 +16,7 @@ export const CounterContainer = styled.div`
   margin-right: auto;
 `;
 
-export const CounterControls = styled.div`
+export const FeedbackOptionsWrapper = styled.div`
   display: flex;
   gap: 10px;
   padding-top: ${props => props.theme.space[3]}px;
@@ -49,6 +49,20 @@ export const Button = styled.button`
   &:hover {
     background-color: #fff;
     color: #54a5e7;
+  }
+`;
+
+export const GreenButton = styled(Button)`
+  background-color: #4cceb2;
+  &:hover {
+    color: #4cceb2;
+  }
+`;
+
+export const RedButton = styled(Button)`
+  background-color: #fa5e4a;
+  &:hover {
+    color: #fa5e4a;
   }
 `;
 
