@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { SubTitle } from 'components/App.styled';
+import { SubTitle } from 'components/Section/Section.styled';
 
 export default function Section({ title, children }) {
   return (
@@ -9,3 +9,7 @@ export default function Section({ title, children }) {
     </>
   );
 }
+
+Section.propTypes = {
+  title: PropTypes.string,
+};

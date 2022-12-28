@@ -5,6 +5,7 @@ import { CounterContainer, Title, StatisticsWrapper } from './App.styled';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 import Statistics from 'components/Statistics/Statistics';
 import Section from 'components/Section/Section';
+import Notification from 'components/Notification/Notification';
 
 class App extends Component {
   static defaultProps = {
@@ -62,13 +63,17 @@ class App extends Component {
         </Section>
         <StatisticsWrapper>
           <Section title="Statistics">
-            <Statistics
-              good={this.state.good}
-              neutral={this.state.neutral}
-              bad={this.state.bad}
-              total={this.countTotalFeedback()}
-              percentage={this.countPositiveFeedbackPercentage()}
-            />
+            {!this.countTotalFeedback() ? (
+              <Notification message="There is no feedback" />
+            ) : (
+              <Statistics
+                good={this.state.good}
+                neutral={this.state.neutral}
+                bad={this.state.bad}
+                total={this.countTotalFeedback()}
+                percentage={this.countPositiveFeedbackPercentage()}
+              />
+            )}
           </Section>
         </StatisticsWrapper>
       </CounterContainer>

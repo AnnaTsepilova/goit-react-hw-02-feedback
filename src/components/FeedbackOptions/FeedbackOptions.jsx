@@ -1,4 +1,8 @@
-import { FeedbackOptionsWrapper, Button } from 'components/App.styled';
+import PropTypes from 'prop-types';
+import {
+  FeedbackOptionsWrapper,
+  Button,
+} from 'components/FeedbackOptions/FeedbackOptions.styled';
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
@@ -17,3 +21,8 @@ export default function FeedbackOptions({ options, onLeaveFeedback }) {
     </FeedbackOptionsWrapper>
   );
 }
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.array.isRequired,
+  onLeaveFeedback: PropTypes.func.isRequired,
+};

@@ -4,7 +4,7 @@ import {
   StatisticsItem,
   Text,
   CounterValue,
-} from 'components/App.styled';
+} from 'components/Statistics/Statistics.styled';
 
 export default function Statistics({ good, neutral, bad, total, percentage }) {
   return (
@@ -32,3 +32,11 @@ export default function Statistics({ good, neutral, bad, total, percentage }) {
     </StatisticsList>
   );
 }
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  percentage: PropTypes.number.isRequired,
+};
