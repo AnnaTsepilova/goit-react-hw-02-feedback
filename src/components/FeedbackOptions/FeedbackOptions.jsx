@@ -8,8 +8,8 @@ import {
 
 const components = {
   good: goodButton,
-  bad: badButton,
   neutral: neutralButton,
+  bad: badButton,
 };
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {
