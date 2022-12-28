@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import {
   FeedbackOptionsWrapper,
-  goodButton,
-  badButton,
-  neutralButton,
+  GoodButton,
+  NeutralButton,
+  BadButton,
 } from 'components/FeedbackOptions/FeedbackOptions.styled';
 
 const components = {
-  good: goodButton,
-  neutral: neutralButton,
-  bad: badButton,
+  good: GoodButton,
+  neutral: NeutralButton,
+  bad: BadButton,
 };
 
 export default function FeedbackOptions({ options, onLeaveFeedback }) {

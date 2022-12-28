@@ -37,18 +37,18 @@ export const Button = styled.button`
   }
 `;
 
-export const goodButton = styled(Button)`
+export const GoodButton = styled(Button)`
   background-color: #4cceb2;
   &:hover {
     color: #4cceb2;
   }
 `;
 
-export const badButton = styled(Button)`
+export const BadButton = styled(Button)`
   background-color: #fa5e4a;
   &:hover {
     color: #fa5e4a;
   }
 `;
 
-export const neutralButton = styled(Button)``;
+export const NeutralButton = styled(Button)``;
